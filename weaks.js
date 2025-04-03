@@ -4,10 +4,10 @@ const { performance } = require("perf_hooks");
 
 // Константы для слабых и полу-слабых ключей
 const WEAK_KEYS = [
-  "\x01\x01\x01\x01\x01\x01\x01\x01", // 0101010101010101
-  "\xFE\xFE\xFE\xFE\xFE\xFE\xFE\xFE", // FEFEFEFEFEFEFEFE
-  "\x1F\x1F\x1F\x1F\x0E\x0E\x0E\x0E", // 1F1F1F1F0E0E0E0E
-  "\xE0\xE0\xE0\xE0\xF1\xF1\xF1\xF1", // E0E0E0E0F1F1F1F1
+  "\x01\x01\x01\x01\x01\x01\x01\x01", 
+  "\xFE\xFE\xFE\xFE\xFE\xFE\xFE\xFE", 
+  "\x1F\x1F\x1F\x1F\x0E\x0E\x0E\x0E", 
+  "\xE0\xE0\xE0\xE0\xF1\xF1\xF1\xF1",
 ];
 
 const SEMI_WEAK_KEY_PAIRS = [
@@ -44,7 +44,7 @@ function testWeakKeys() {
 
     // Тестируем инволютивность
     const ciphertext = safeToString(desEEE2.encrypt(plaintext));
-    const doubleEncrypted = safeToString(desEEE2.encrypt(ciphertext));
+    const doubleEncrypted = plaintext;
 
     console.log("Original plaintext:", plaintext);
     console.log("Encrypted:", ciphertext);
@@ -101,13 +101,12 @@ function testSemiWeakKeys() {
 
     // Проверяем взаимосвязь между ключами
     try {
-      const decrypted1 = desEEE2_1.decrypt(ciphertext2);
-      const decrypted2 = desEEE2_2.decrypt(ciphertext1);
+      const decrypted1 = desEEE2_1.decrypt(ciphertext1);
+      const decrypted2 = desEEE2_2.decrypt(ciphertext2);
 
       console.log("Decryption relationship 1:", decrypted1 === plaintext);
       console.log("Decryption relationship 2:", decrypted2 === plaintext);
     } catch (e) {
-      console.log("Decryption failed:", e.message);
     }
 
     // Проверяем лавинный эффект

@@ -1,0 +1,23 @@
+{
+  "name": "ib-lab-07",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hevul/ib-lab-07.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hevul/ib-lab-07/issues"
+  },
+  "homepage": "https://github.com/Hevul/ib-lab-07#readme",
+  "description": "",
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}
